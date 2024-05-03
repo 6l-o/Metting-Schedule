@@ -1,0 +1,73 @@
+{%extends "default.html"%}
+            {%block title%}Dashboard{%endblock%}
+            {%block pagemenu%} Dashboard {%endblock%}
+            
+            {%block profile%}
+            <img class="profile-img"
+                    src="{% if user.user_avatar %}{{ user.user_avatar }}{% else %}https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?s=200{% endif %}"
+                    alt="">
+            {%endblock%}
+
+            {%block popup%}
+            <div class="pop-up">
+              <div class="pop-up__title">Scudule Shutdown
+                <svg class="close" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round" class="feather feather-x-circle">
+                  <circle cx="12" cy="12" r="10" />
+                  <path d="M15 9l-6 6M9 9l6 6" />
+                </svg>
+              </div>
+              <div class="pop-up__subtitle"> This is to set a Schedule Shutdown for all PCs on whole buldings on
+                specific time </div>
+              <p></p>
+              <div class="inputContainer">
+                <input required="required" id="inputField" placeholder="Username" type="time">
+                <label class="usernameLabel" for="inputField">Schedule Time</label>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="userIcon"
+                  viewBox="0 0 16 16">
+                  <path
+                    d="M8.515 1.019A7 7 0 0 0 8 1V0a8 8 0 0 1 .589.022zm2.004.45a7 7 0 0 0-.985-.299l.219-.976q.576.129 1.126.342zm1.37.71a7 7 0 0 0-.439-.27l.493-.87a8 8 0 0 1 .979.654l-.615.789a7 7 0 0 0-.418-.302zm1.834 1.79a7 7 0 0 0-.653-.796l.724-.69q.406.429.747.91zm.744 1.352a7 7 0 0 0-.214-.468l.893-.45a8 8 0 0 1 .45 1.088l-.95.313a7 7 0 0 0-.179-.483m.53 2.507a7 7 0 0 0-.1-1.025l.985-.17q.1.58.116 1.17zm-.131 1.538q.05-.254.081-.51l.993.123a8 8 0 0 1-.23 1.155l-.964-.267q.069-.247.12-.501m-.952 2.379q.276-.436.486-.908l.914.405q-.24.54-.555 1.038zm-.964 1.205q.183-.183.35-.378l.758.653a8 8 0 0 1-.401.432z" />
+                  <path d="M8 1a7 7 0 1 0 4.95 11.95l.707.707A8.001 8.001 0 1 1 8 0z" />
+                  <path
+                    d="M7.5 3a.5.5 0 0 1 .5.5v5.21l3.248 1.856a.5.5 0 0 1-.496.868l-3.5-2A.5.5 0 0 1 7 9V3.5a.5.5 0 0 1 .5-.5" />
+                </svg>
+              </div>
+              <p></p>
+              <div class="content-button-wrapper">
+                <button class="content-button status-button open close">Cancel</button>
+                <button class="content-button status-button">Continue</button>
+              </div>
+            </div>
+            {%endblock%}
+
+            {%block content%}
+                <div class="app-card">
+                  <span>
+                    <svg viewBox="0 0 512 512">
+                      <g xmlns="http://www.w3.org/2000/svg" fill="currentColor">
+                        <path d="M0 0h128v128H0zm0 0M192 0h128v128H192zm0 0M384 0h128v128H384zm0 0M0 192h128v128H0zm0 0"
+                          data-original="#bfc9d1" />
+                      </g>
+                      <path xmlns="http://www.w3.org/2000/svg" d="M192 192h128v128H192zm0 0" fill="currentColor"
+                        data-original="#82b1ff" />
+                      <path xmlns="http://www.w3.org/2000/svg"
+                        d="M384 192h128v128H384zm0 0M0 384h128v128H0zm0 0M192 384h128v128H192zm0 0M384 384h128v128H384zm0 0"
+                        fill="currentColor" data-original="#bfc9d1" />
+                    </svg>
+                    Status
+                  </span>
+                  <div class="app-card__subtext">
+                    <span>Total Employees Online : <span id="totalEmployees"></span></span>
+                    <span>Total PCs Online: <span id="totalPCs"></span></span>
+                    <div>
+                      <span>PC Status Per Day (Past Week)</span>
+                      <canvas id="pcStatusChart"></canvas> <!-- Canvas for chart -->
+                    </div>
+                  </div>
+
+
+                 
+
+                </div>
+            {%endblock%}
+
